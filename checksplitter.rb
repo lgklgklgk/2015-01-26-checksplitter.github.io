@@ -1,18 +1,10 @@
 require "pry"
 class Checksplitter
+  attr_reader :meal, :group, :tip
   def initialize(meal, group, tip)
     @meal = meal
     @group = group
     @tip = tip
-  end
-  def meal
-    @meal
-  end
-  def group
-    @group
-  end
-  def tip
-    @tip
   end
   def get_tip
     (meal * tip) / 100
@@ -25,7 +17,7 @@ end
 class Dinerclub
   def initialize(outing)
     @outing = outing
-    @checks = []
+    @checks = ["Jeff", "Kelly", "Anne", "Josh"]
   end
   def new_check(name, amount)
     add_check(meal, group, tip)
