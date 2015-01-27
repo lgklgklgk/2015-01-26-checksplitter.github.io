@@ -20,7 +20,7 @@ class Dinerclub
     @checks = []
   end
   def split_check(m, g, t)
-    split_check = Checksplitter.new(m, g, t)
+    split_check = Checksplitter.new(m, g, t).check_split
   end
   def add_check(name, split_check)
     @checks.push(name: name, amount: split_check)
