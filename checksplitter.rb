@@ -12,6 +12,9 @@ class Checksplitter
   def check_split
     (meal + ((meal * tip) / 100)) / group
   end
+  def get_split
+    check_split
+  end
 end
 
 class Dinerclub
@@ -20,10 +23,7 @@ class Dinerclub
     @checks = []
   end
   def split_check(m, g, t)
-    Checksplitter.new(m, g, t).check_split
-  end
-  def final_check
-    split_check(m, g, t)
+    split_check = Checksplitter.new(m, g, t).check_split
   end
   def add_check(name, amount)
     @checks.push(name: name, amount: amount)
