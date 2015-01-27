@@ -1,6 +1,6 @@
 require "pry"
 class Checksplitter
-  def initialize(param1, param2, param3)
+  def initialize(meal, group, tip)
     @meal = meal
     @group = group
     @tip = tip
