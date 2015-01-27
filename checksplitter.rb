@@ -29,10 +29,10 @@ class Dinerclub
     add_check("Beginning Balance", 0)
   end
   def new_check(name, amount)
-    add_check(name, amount)
+    add_check(var1, var2, var3)
   end
-  def add_check(name, amount)
-    @checks.push(Checksplitter.new(name, amount))
+  def add_check(var1, var2, var3)
+    @checks.push(Checksplitter.new(var1, var2, var3))
   end
   def balance
     balance = 0.0
