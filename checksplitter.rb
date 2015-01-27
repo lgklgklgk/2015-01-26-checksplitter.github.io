@@ -17,13 +17,13 @@ end
 class Dinerclub
   def initialize(outing)
     @outing = outing
-    @checks = ["Jeff", "Kelly", "Anne", "Josh"]
+    @checks = []
   end
-  def new_check(name, amount)
-    add_check(meal, group, tip)
+  def split_check(m, g, t)
+    split_check = Checksplitter.new(m, g, t)
   end
-  def add_check(meal, group, tip)
-    @checks.push(Checksplitter.new(meal, group, tip))
+  def add_check(name, split_check)
+    @checks.push(name: name, amount: split_check)
   end
   def balance
     balance = 0.0
