@@ -27,7 +27,7 @@ class Dinerclub
     @outing = outing
     @checks = []
   end
-  def new_check(name, amount)
+  def new_check("name", amount)
     add_check(meal, group, tip)
   end
   def add_check(meal, group, tip)
