@@ -5,26 +5,26 @@ class Checksplitter
     @group = group
     @tip = tip
   end
-end
 
-def meal
-  @meal
-end
+  def meal
+    @meal
+  end
 
-def group
-  @group
-end
+  def group
+    @group
+  end
 
-def tip
-  @tip
-end
+  def tip
+    @tip
+  end
 
-def get_tip
-  (meal * tip) / 100
-end
+  def get_tip
+    (meal * tip) / 100
+  end
 
-def check_split
-  (meal + ((meal * tip) / 100)) / group
+  def check_split
+    (meal + ((meal * tip) / 100)) / group
+  end
 end
 binding.pry
 
