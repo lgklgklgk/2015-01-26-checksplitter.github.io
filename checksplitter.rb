@@ -13,7 +13,7 @@ class Checksplitter
     (meal + ((meal * tip) / 100)) / group
   end
   def get_split
-    check_split
+    self.check_split
   end
 end
 
