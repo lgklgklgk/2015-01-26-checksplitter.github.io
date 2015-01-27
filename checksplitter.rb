@@ -22,13 +22,16 @@ class Dinerclub
   def split_check(m, g, t)
     Checksplitter.new(m, g, t).check_split
   end
-  def add_check(name, split_check)
-    @checks.push(name: name, amount: split_check)
+  def final_check
+    split_check(m, g, t)
+  end
+  def add_check(name, amount)
+    @checks.push(name: name, amount: amount)
   end
   def balance
     balance = 0.0
     @checks.each do |x|
-      balance += x.check_split
+      puts x
     end
     return balance
   end
