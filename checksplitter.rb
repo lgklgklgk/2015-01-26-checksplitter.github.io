@@ -26,7 +26,7 @@ class Dinerclub
   def initialize(outing)
     @outing = outing
     @checks = []
-    add_check("Beginning Balance", 0)
+    add_check(meal, group, tip)
   end
   def new_check(name, amount)
     add_check(meal, group, tip)
