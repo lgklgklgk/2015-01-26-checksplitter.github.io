@@ -32,7 +32,7 @@ class Dinerclub
     add_check(name, amount)
   end
   def add_check(name, amount)
-    @checks.push(Checksplitter.new(meal, group, tip))
+    @checks.push(Checksplitter.new(name, amount))
   end
   def balance
     balance = 0.0
