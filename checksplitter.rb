@@ -1,3 +1,4 @@
+require "pry"
 class Checksplitter
   def initialize(param1, param2, param3)
     @meal = param1
@@ -7,9 +8,9 @@ class Checksplitter
 end
 
 def get_tip
-  tip = (@meal * @tip) / 100
+  (@meal * @tip) / 100
 end
-def split
+def check_split
   (@meal + ((@meal * @tip) / 100)) / @group
 end
-upstream = Checksplitter.new(174, 6, 20)
+binding.pry
