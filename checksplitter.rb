@@ -26,7 +26,7 @@ class Checksplitter
 # State Changes:
 # Sets the three primary attributes 
   attr_reader :meal, :group, :tip
-  def initialize(meal, group, tip)
+  def initialize(meal, tip, group)
     @meal = meal
     @group = group
     @tip = tip
@@ -39,9 +39,11 @@ class Checksplitter
 #
 # Returns:
 # Integer: Amount of the tip
-# Sets amount of the tip
   def get_tip
     (meal * tip) / 100
+  end
+  def get_total_bill
+    ((meal * tip) / 100) + meal
   end
 # Public: #check_split
 # Splits the the total cost (meal + tip) amongst the group
@@ -75,8 +77,6 @@ end
 # split_check
 # add_check
 class Dinerclub
-  attr_reader :split
-  attr_accessor :members, :outing
 # Public: Initialize
 # Sets inital values for the members and the outing number
 #
@@ -86,27 +86,60 @@ class Dinerclub
 # split        - instance variable linked to checksplitter object
 # Returns      : Keys and values of the dinner club members
 # State changes: Values of members hash can change based on other methods 
-  def initialize(outing)
-    @members = { "Jeff" => 0, "Kelly" => 0, "Becky" => 0, "Anne" => 0, "Josh" => 0 }
+  def initialize
+    @members = {}
     @event_list = Hash.new
   end 
-  def new_event(restaurant, *members)
-    @event_list[restaurant] = *members
+  def add_member(member)
+    @members[member] = 0.0
+    @members
   end
-  def split_check(m, g, t)
-    @split = Checksplitter.new(m, g, t).check_split
-  end
-  def add_check
-    @members.each do |x, y|
-      @members[x] = y + @split
+  def show_members
+    @members.each do |member, amt|
+      puts member
     end
+    @members
   end
-end   
-upstream = Dinerclub.new(1)
-upstream.new_event("Blue", "Jeff", "Kelly", "Anne")
-upstream.split_check(200, 3, 20)
-upstream.split
-upstream.add_check
+  def remove_member (member)
+    @members.delete(member)
+    @members
+  end
+  def new_event(restaurant, *diners)
+    @event_list[restaurant] = diners
+    @event_list
+  end
+  def show_events
+    @event_list.each do |restaurant, diners|
+      print restaurant, diners
+    end
+    @event_list
+  end
+  def have_an_outing (total, tip, *diners)
+    cs = Checksplitter.new(total, tip, diners.length)
+    amount_per_person = cs.check_split
+    diners.each do |diner|
+      if @members.include?(diner)
+        @members[diner] += amount_per_person
+      else
+        @members[diner] = amount_per_person
+      end
+    end
+    @members
+  end
+  def treat(meal, tip, treator, *diners)
+    cs = Checksplitter.new(meal, tip, diners)
+    total_bill = cs.get_total_bill
+    if @members.include?(treator)
+      @members[treator] += total_bill
+    else
+      @members[treator] = total_bill
+    end
+    @members
+  end  
+end  
+ 
+club = Dinerclub.new
+
 
 binding.pry
 
