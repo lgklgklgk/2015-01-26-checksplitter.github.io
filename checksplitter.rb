@@ -16,16 +16,22 @@ end
 
 class Dinerclub
   attr_reader :split
+  attr_accessor :members, :outing
   def initialize(outing)
-    @outing = outing
-    @checks = []
-  end
+    @members = { "Jeff" => 0, "Kelly" => 0, "Becky" => 0, "Anne" => 0, "Josh" => 0 }
+  end  
   def split_check(m, g, t)
     @split = Checksplitter.new(m, g, t).check_split
-  
+  end
+  def add_check
+    @members.each do |x, y|
+      @members[x] = y + @split
+    end
   end
 end   
-    
-  
+upstream = Dinerclub.new(1)
+upstream.split_check(200, 3, 20)
+upstream.split
+upstream.add_check
 binding.pry
 
