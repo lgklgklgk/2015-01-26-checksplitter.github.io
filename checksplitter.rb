@@ -139,7 +139,12 @@ class Dinerclub
 end  
  
 club = Dinerclub.new
-
+club.new_event("Blue", "Kelly", "Anne", "Becky", "Luke")
+club.have_an_outing(250, 25, "Kelly", "Anne", "Becky", "Luke")
+club.new_event("Boiler Room", "Luke", "Becky")
+club.treat(300, 20, "Luke", "Becky")
+club.show_members
+club.show_events
 
 binding.pry
 
