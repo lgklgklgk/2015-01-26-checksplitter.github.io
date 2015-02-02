@@ -222,6 +222,5 @@ club.have_an_outing(250, 25, "Kelly", "Anne", "Becky", "Luke")
 club.new_event("Boiler Room", "Luke", "Becky")
 club.treat(300, 20, "Luke", "Becky")
 
-
 binding.pry
 
